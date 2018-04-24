@@ -22,7 +22,7 @@ Contiene todas las funciones necesarias para manejar los eventos de inicio de se
 
 ## Sobre los request
 
-Para Iniciar Sesion llamar obtenerUsuario(post, correo, contrasena):
+Para Iniciar Sesion llamar /obtenerUsuario(post, correo, contrasena):
 	Recibes Json
 	Si status = OK entonces
 		llamar /iniciarSesion(post, correo, contrasena))
