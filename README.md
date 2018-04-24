@@ -1,26 +1,26 @@
 # sistema-gestor
 
-##Web.php
+## Web.php
 
-###Routes/web.php
+### Routes/web.php
 
 Este archivo es llamado en cada petición.
 Decide dependiendo de la ruta a que controlador y que metodo de este llamar.
 Notar que distingue en si el llamado se hizo con post o get.
 
-##UsuariosControlador.php
+## UsuariosControlador.php
 
-###App/HTTP/Controllers/UsuariosControlador.php
+### App/HTTP/Controllers/UsuariosControlador.php
 
 Contiene todas las funciones necesarias para manejar los eventos que tengan que ver
 con el usuario.
 
-##SesionControlador.php
-###App/HTTP/Controllers/SesionControlador.php
+## SesionControlador.php
+### App/HTTP/Controllers/SesionControlador.php
 Contiene todas las funciones necesarias para manejar los eventos de inicio de sesion.
 
 
-##Sobre los request
+## Sobre los request
 
 Para Iniciar Sesion llamar obtenerUsuario(post, correo, contrasena):
 	Recibes Json
