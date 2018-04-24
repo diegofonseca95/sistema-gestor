@@ -23,3 +23,4 @@ Route::get('/', 'UsuariosControlador@index');
 Route::get('/agregarUsuario', 'UsuariosControlador@agregarUsuario');
 Route::post('/agregarUsuario', 'UsuariosControlador@agregarUsuarioBD');
 Route::post('/obtenerUsuario', 'UsuariosControlador@obtenerUsuario');
+Route::post('/prueba', 'SesionControlador@iniciarSesion');
