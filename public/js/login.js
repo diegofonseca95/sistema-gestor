@@ -1,23 +1,9 @@
-function Center(){
-    var b = $('#login-box').height();
-    var a = $(window).height();
-    var m = (a - b) >> 1;
-    if(m < 0) return;
-    $('#login-box').offset(
-        { top : m, left : 0 }
-    );
-}
-
 $(document).ready(function(){
-    var instance = M.Modal.init(
-        document.querySelector('.modal')
-    );
-    $(window).resize(Center);
-    Center();
     $('#login-form').validate({
         rules : {
             correo : {
                 required: true,
+                maxlength: 256,
                 email : true
             },
             contrasena : {
@@ -28,7 +14,8 @@ $(document).ready(function(){
         messages : {
             correo : {
                 required : 'Ingresa tu usuario.',
-                email : 'Ingresa un usuario válido.'
+                maxlength: 'Máximo 256 caractéres.',
+                email : 'Ingresa un usuario válido.',
             },
             contrasena : {
                 required : 'Ingresa tu contraseña',
@@ -42,31 +29,32 @@ $(document).ready(function(){
                 $(placement).append(error);
             else
                 error.insertAfter(element);
-        }
-    });
-    $('#forgot-form').validate({
-        rules : {
-            correo : {
-                required : true,
-                email : true
-            }
         },
-        messages : {
-            correo : {
-                required : 'Ingresa tu usuario.',
-                email : 'Ingresa un usuario válido.'
-            }
-        },
-        errorElement : 'div',
-        errorPlacement : function(error, element){
-            var placement = $(element).data('error');
-            if(placement)
-                $(placement).append(error);
-            else
-                error.insertAfter(element);
-        },
-        submitHandler : function(form){
-            // TODO : Send input
+        submitHandler : function(form){ 
+            var json = {};
+            $(form).serializeArray().map(function(p){
+                var clean = p['value'].split(' ');
+                clean = clean.filter(Boolean);
+                json[p['name']] = clean.join(' ');
+            });
+            // ERROR TEST : https://api.myjson.com/bins/19xl8j
+            // OK TEST : https://api.myjson.com/bins/a9q3n
+            console.log(json);
+            $.ajax({
+                url : '/iniciarSesion',
+                method : 'POST',
+                data : json
+            }).done(function(response){
+                if(!response.hasOwnProperty('status'))
+                    return;
+                if(response.status === 'ERROR'){
+                    ErrorToast(response.result);
+                    return;
+                }
+                // Replace with the actual 
+                // page/script
+                window.location.replace(response.result);
+            });
         }
     });
 });

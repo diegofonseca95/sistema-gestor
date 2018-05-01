@@ -80,6 +80,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     Sistema de Información ACM-ICPC
+                    Bienvendido <?php echo session('nombre');?>
                 </div>
                 
                 <div class="links">

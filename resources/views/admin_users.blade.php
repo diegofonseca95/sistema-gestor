@@ -1,66 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style type="text/css">
-            .page-background{
-
-    background-color : #eeeeee !important;
-
-}
-
-.first-background{
-
-    background-color : #0d47a1 !important;
-
-}
-
-.first-text{
-
-    color : #0d47a1 !important;    
-
-}
-
-.second-background{
-
-    background-color : #f44336 !important;
-
-}
-
-.second-text{
-
-    color : #f44336 !important;
-
-}
-
-.third-background{
-
-    background-color : #ffd600 !important;
-
-}
-
-.third-text{
-
-    color : #ffd600 !important;
-
-}
-
-.error-text{
-
-    color : #d50000 !important;
-
-}
-
-.ok-text{
-
-    color : #64dd17 !important;
-
-}
-        </style>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css" media="screen,projection">
         <link rel="stylesheet" type="text/css" href="../css/system_colors.css">
         
-        <title>Inicia Sesi&oacute;n</title>
+        <title>Administrar Usuarios</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -68,7 +13,7 @@
     <body class="page-background">
         <nav>
             <div class="nav-wrapper second-background">
-                <a href="#!" class="brand-logo"><i class="material-icons">computer</i>Usuarios</a>
+                <a href="#!" class="brand-logo center"><i class="material-icons">computer</i>Usuarios</a>
                 <ul class="right">
                     <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
                 </ul>
@@ -77,7 +22,7 @@
         <!-- Content Begin -->
         <div class="container">
             <div class="section"></div>
-            <div class="row" id="login-box">
+            <div class="row" id="admin-users-box">
 
                 <div class="card">
                     <div class="card-content">
@@ -88,34 +33,13 @@
                                 <label for="first_name">B&uacute;squeda de Usuarios</label>
                             </div>
                         </form>
-
-                        <ul class="collection with-header">
-                            <li class="collection-header grey lighten-3"><h4>Resultados</h4></li>
-                            <li class="collection-item"><div>
-                                Tesla
-                                <a href="#!" class="secondary-content"><i class="material-icons ok-text">check</i></a>
-                                <a href="#!" class="secondary-content"><i class="material-icons error-text">close</i></a>
-                            </div></li>
-                            <li class="collection-item"><div>
-                                Faraday
-                                <a href="#!" class="secondary-content"><i class="material-icons ok-text">check</i></a>
-                                <a href="#!" class="secondary-content"><i class="material-icons error-text">close</i></a>
-                            </div></li>
-                            <li class="collection-item"><div>
-                                Kuhn
-                                <a href="#!" class="secondary-content"><i class="material-icons ok-text">check</i></a>
-                                <a href="#!" class="secondary-content"><i class="material-icons error-text">close</i></a>
-                            </div></li>
-                            <li class="collection-item"><div>
-                                Dijkstra
-                                <a href="#!" class="secondary-content"><i class="material-icons ok-text">check</i></a>
-                                <a href="#!" class="secondary-content"><i class="material-icons error-text">close</i></a>
-                            </div></li>
-                            <li class="collection-item"><div>
-                                Tarjan
-                                <a href="#!" class="secondary-content"><i class="material-icons ok-text">check</i></a>
-                                <a href="#!" class="secondary-content"><i class="material-icons error-text">close</i></a>
-                            </div></li>
+                        <ul class="collection">
+                            <admin-user-list-item 
+                                v-for="user in users"
+                                v-bind:edit-user="editUser"
+                                v-bind:key="user.id"
+                                v-bind:user="user">
+                            </admin-user-list-item>
                         </ul>
                     </div>
                 </div>
@@ -158,8 +82,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.min.js"></script>
-        <script type="text/javascript">
-            M.AutoInit();
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="../js/toasts.js"></script>  
+        <script src="../js/components/admin-user-list-item.js"></script>
+        <script src="../js/admin_users.js"></script>
     </body>
 </html>

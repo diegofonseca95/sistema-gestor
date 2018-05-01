@@ -16,6 +16,9 @@ class UsuariosControlador extends Controller
     	return view('index');
     }
 
+    public function administrarUsuarios(){
+        return view('admin_users');
+    }
     public function agregarUsuarioBD(){
     	$usuario = new Usuario;
         $query = $usuario->where([['correo', '=', request('correo')]])->get();
@@ -43,24 +46,6 @@ class UsuariosControlador extends Controller
 
     public function obtenerUsuario(){
 
-    	$usuario = new Usuario;
-
-    	$query = $usuario->where([['correo', '=', request('correo')],['contrasena', '=', request('contrasena')]])->get();
-
-    	if($query->isNotEmpty() && $query[0]->estado == 1){
-            return response()->json([
-                'status'=> 'OK'
-                ]);
-    	}else if($query->isNotEmpty() && $query[0]->estado == 2){
-            return response()->json([
-                'status'=> 'ERROR',
-                'result'=> 'Usuario no validado. Pongase en contacto con el administrador'
-                ]);
-        }else{
-            return response()->json([
-                'status'=> 'ERROR',
-                'result'=> 'Correo ó contraseña incorrecto'
-                ]);
-        }
+    	
     }
 }

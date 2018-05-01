@@ -7,6 +7,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css" media="screen,projection">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/system_colors.css">
     </head>
     <body class="grey lighten-3">
         <div class="row" id="register-box">
@@ -17,63 +18,62 @@
                         <div class="section"></div>
                         <div class="row">
                             <div class="col s1"></div>
-                            <form class="col s10" id="register-form" method="post" action="/agregarUsuario">
-                                {{csrf_field()}}
-                                <span class="card-title blue-text text-darken-4"><b>Reg&iacute;strate</b></span>
+                            <form class="col s10" id="register-form">
+                                <span class="card-title first-text"><b>Reg&iacute;strate</b></span>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix yellow-text text-accent-4">account_circle</i>
+                                        <i class="material-icons prefix third-text">account_circle</i>
                                         <input data-error="#nombre-error" placeholder="John" id="nombre" name="nombre" type="text" class="validate" autofocus>
                                         <label for="nombre">Nombre(s)</label>
-                                        <div id="nombre-error" class="red-text text-accent-4"></div>
+                                        <div id="nombre-error" class="error-text"></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12 l6">
-                                        <input data-error="#paterno-error" placeholder="Doe" id="apellidoPaterno" name="apellidoPaterno" type="text" class="validate" autofocus>
+                                        <input data-error="#paterno-error" placeholder="Doe" id="paterno" name="apellidoPaterno" type="text" class="validate">
                                         <label for="paterno">Apellido Paterno</label>
-                                        <div id="paterno-error" class="red-text text-accent-4"></div>
+                                        <div id="paterno-error" class="error-text"></div>
                                     </div>
                                     <div class="input-field col s12 l6">
-                                        <input data-error="#materno-error" placeholder="Doe" id="apellidoMaterno" name="apellidoMaterno" type="text" class="validate" autofocus>
+                                        <input data-error="#materno-error" placeholder="Doe" id="materno" name="apellidoMaterno" type="text" class="validate">
                                         <label for="materno">Apellido Materno</label>
-                                        <div id="materno-error" class="red-text text-accent-4"></div>
+                                        <div id="materno-error" class="error-text"></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix yellow-text text-accent-4">contact_mail</i>
-                                        <input data-error="#correo-error" placeholder="correo@ejemplo.com" id="correo" name="correo" type="text" class="validate" autofocus>
+                                        <i class="material-icons prefix third-text">contact_mail</i>
+                                        <input data-error="#correo-error" placeholder="correo@ejemplo.com" id="correo" name="correo" type="text" class="validate">
                                         <label for="correo">Correo Electr&oacute;nico</label>
-                                        <div id="correo-error" class="red-text text-accent-4"></div>
+                                        <div id="correo-error" class="error-text"></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix yellow-text text-accent-4">contact_phone</i>
-                                        <input data-error="#telefono-error" placeholder="55 5555 5555" id="telefono" name="telefono" type="text" class="validate" autofocus>
+                                        <i class="material-icons prefix third-text">contact_phone</i>
+                                        <input data-error="#telefono-error" placeholder="55 5555 5555" id="telefono" name="telefono" type="text" class="validate">
                                         <label for="telefono">Tel&eacute;fono</label>
-                                        <div id="telefono-error" class="red-text text-accent-4"></div>
+                                        <div id="telefono-error" class="error-text"></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix yellow-text text-accent-4">vpn_key</i>
+                                        <i class="material-icons prefix third-text">vpn_key</i>
                                         <input data-error="#contrasena-error" id="contrasena" name="contrasena" type="password" class="validate">
                                         <label for="contrasena">Contrase&ntilde;a</label>
-                                        <div id="contrasena-error" class="red-text text-accent-4"></div>
+                                        <div id="contrasena-error" class="error-text"></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col s0 m6"></div>
                                     <div class="col s12 m6">
                                         <div class="row">
-                                            <button type="submit" class="waves-effect waves-light btn col s12 red">Enviar</button>
+                                            <button type="submit" class="waves-effect waves-light btn col s12 second-background">Enviar</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row center-align">
-                                    <a class="blue-text text-darken-4 col s12" href="/">REGRESAR</a>
+                                    <a class="first-text col s12" href="../index.html">REGRESAR</a>
                                 </div>
                             </form>
                             <div class="col s1"></div>
@@ -87,7 +87,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.min.js"></script>
-        <script src="{{ URL::asset('js/validate/custom-methods.js') }}"></script>
-        <script src="{{ URL::asset('js/register.js') }}"></script>
+        <script src="/js/validate/custom-methods.js"></script>
+        <script src="/js/toasts.js"></script>  
+        <script src="/js/register.js"></script>
     </body>
 </html>
