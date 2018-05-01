@@ -24,3 +24,8 @@ Route::get('/agregarUsuario', 'UsuariosControlador@agregarUsuario');
 Route::post('/agregarUsuario', 'UsuariosControlador@agregarUsuarioBD');
 Route::post('/obtenerUsuario', 'UsuariosControlador@obtenerUsuario');
 Route::post('/iniciarSesion', 'SesionControlador@iniciarSesion');
+Route::get('/administrarUsuarios','UsuariosControlador@administrarUsuarios');
+Route::get('/administrarGrupos', 'GruposControlador@administrarGrupos');
+Route::get('/agregarGrupo', 'GruposControlador@agregarGrupo');
+Route::post('/obtenerLider', 'GruposControlador@obtenerLider');
+Route::post('/agregarGrupo', 'GruposControlador@agregarGrupoBD');
