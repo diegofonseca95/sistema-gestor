@@ -44,8 +44,41 @@ class UsuariosControlador extends Controller
                 ]);
     }
 
-    public function obtenerUsuario(){
+    public obtenerUsuario(){
+        $usuario = new Usuario;
+        $query = $usuario->where(['idUsuario','=', request('idUsuario')]);
 
-    	
+        return $query;
     }
+
+    public obtenerUsuarios(){
+        $usuario = new Usuario;
+        
+        return $usuario->get();
+    }
+
+    public validarUsuario(){
+        $usuario = App\Usuario::find(request('idUsuario');
+
+        if($usuario->estado == 2){
+            $usuario->estado = 1;
+            $usuario->save();
+            return response()->json([
+                'status'=> 'OK',
+                'result'=> '/'
+                ]);
+        }
+        
+        else if($usuario->estado == 1){
+            return response()->json([
+                'status'=> 'ERROR',
+                'result'=> 'El usuario ya había sido validado'
+                ]);
+        }
+        else return response()->json([
+                'status'=> 'ERROR',
+                'result'=> 'Usuario no existe'
+                ]);
+    }
+
 }
