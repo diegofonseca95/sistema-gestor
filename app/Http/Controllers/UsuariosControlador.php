@@ -81,4 +81,25 @@ class UsuariosControlador extends Controller
                 ]);
     }
 
+    public eliminarUsuario(){
+        $usuario = new Usuario;
+
+        $query = $usuario->where(['idUsuario', '=', request('idUsuario')]);
+
+        if($query->isNotEmpty()){
+            $query->estado = 0;
+            $query->save();
+
+            return response()->json([
+                'status'=> 'OK',
+                'result'=> '/'
+                ]);
+        }else{
+            return response()->json([
+                'status'=> 'ERROR',
+                'result'=> 'Usuario no existe'
+                ]);
+        }
+    }
+
 }
